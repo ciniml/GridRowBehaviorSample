@@ -10,6 +10,7 @@ using System.Windows.Interactivity;
 
 namespace GridRowBehaviorSample
 {
+
     public class GridRowBehavior : Behavior<Grid>
     {
         public static readonly DependencyProperty ItemsProperty = DependencyProperty.RegisterAttached(
@@ -37,7 +38,7 @@ namespace GridRowBehaviorSample
         {
             return (ControlTemplate) element.GetValue(ColumnTemplateProperty);
         }
-
+        
         protected override void OnAttached()
         {
             base.OnAttached();

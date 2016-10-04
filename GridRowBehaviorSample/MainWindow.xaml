@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0" local:GridRowBehavior.Items="{Binding Items}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto">
@@ -28,11 +28,14 @@
                 <ColumnDefinition Width="*">
                     <local:GridRowBehavior.ColumnTemplate>
                         <ControlTemplate TargetType="ContentControl">
-                            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="2"/>
                         </ControlTemplate>
                     </local:GridRowBehavior.ColumnTemplate>
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
+
+            <!-- Attach a GridRowBehavior -->
+            <!-- Note that we have to write this code AFTER Grid.ColumnDefinitions is defined to ensure that ColumnDefinitions have been initialized when OnAttached of GridRowBehavior is called. -->
             <i:Interaction.Behaviors>
                 <local:GridRowBehavior/>
             </i:Interaction.Behaviors>
