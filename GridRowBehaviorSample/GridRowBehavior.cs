@@ -10,7 +10,9 @@ using System.Windows.Interactivity;
 
 namespace GridRowBehaviorSample
 {
-
+    /// <summary>
+    /// Construct contents of a Grid from items.
+    /// </summary>
     public class GridRowBehavior : Behavior<Grid>
     {
         public static readonly DependencyProperty ItemsProperty = DependencyProperty.RegisterAttached(

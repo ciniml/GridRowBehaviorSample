@@ -19,8 +19,10 @@
         <Grid Grid.Row="0" local:GridRowBehavior.Items="{Binding Items}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto">
+                    <!-- You can specify a ControlTemplate to define which control is generated for each column -->
                     <local:GridRowBehavior.ColumnTemplate>
                         <ControlTemplate TargetType="ContentControl">
+                            <!-- Item corresponding to a row is set to DataContext. So you can bind its property to control's property. -->
                             <TextBlock Text="{Binding Name}"/>
                         </ControlTemplate>
                     </local:GridRowBehavior.ColumnTemplate>
