@@ -4,9 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GridRowBehaviorSample"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
+        <Grid Grid.Row="0" local:GridRowBehavior.Items="{Binding Items}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto">
+                    <local:GridRowBehavior.ColumnTemplate>
+                        <ControlTemplate TargetType="ContentControl">
+                            <TextBlock Text="{Binding Name}"/>
+                        </ControlTemplate>
+                    </local:GridRowBehavior.ColumnTemplate>
+                </ColumnDefinition>
+                <ColumnDefinition Width="*">
+                    <local:GridRowBehavior.ColumnTemplate>
+                        <ControlTemplate TargetType="ContentControl">
+                            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch"/>
+                        </ControlTemplate>
+                    </local:GridRowBehavior.ColumnTemplate>
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <i:Interaction.Behaviors>
+                <local:GridRowBehavior/>
+            </i:Interaction.Behaviors>
+        </Grid>
+        
+        <TextBox Grid.Row="1" IsReadOnly="True" Text="{Binding ItemValues, Mode=OneWay}"/>
     </Grid>
 </Window>
